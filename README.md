@@ -14,6 +14,9 @@
   <img src="https://img.shields.io/badge/tests-46%20files%20%C2%B7%201000%2B%20checks-2ea44f">
   <img src="https://img.shields.io/badge/scope-defensive%20only-8A8F99">
 </p>
+<p align="center">
+  <img src="netscout-demo.gif" alt="NetScout demo" width="820">
+</p>
 
 <p align="center">
   <img src="screenshots/device-scan.png" alt="NetScout device scan" width="880">
