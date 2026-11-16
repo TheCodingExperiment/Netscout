@@ -1,21 +1,60 @@
-MIT License
+NetScout License
+Copyright (c) 2026 TheCodingExperiment. All rights reserved.
 
-Copyright (c) 2026 Leon
+NetScout ("the Software") is the work and property of its author,
+TheCodingExperiment ("the Author"). This license governs every copy of the
+Software obtained under it. By downloading, installing, running, or copying the
+Software, you agree to these terms. If you do not agree, do not use the Software.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. PERMISSION GRANTED (FREE OF CHARGE)
+   You may, at no cost:
+   a. download, install, and run the Software for personal use and for internal
+      use within your own household or organization; and
+   b. make copies for backup or for the uses allowed in (a).
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+2. WHAT YOU MAY NOT DO
+   You may NOT, without the Author's prior written permission:
+   a. sell, resell, rent, lease, sublicense, or charge any fee for the Software,
+      or include it in any product, service, subscription, or bundle that is
+      sold or paid for;
+   b. distribute or publish the Software to the public, modified or unmodified -
+      including uploading it to any website, app store, marketplace, or
+      repository - as your own offering or as a download you provide;
+   c. claim, state, imply, or allow anyone to believe that you are the author or
+      owner of the Software, or that it is your own work, app, or product;
+   d. remove, hide, rename, or alter this license, the copyright notice, the
+      Author's name, or any attribution contained in the Software or its
+      documentation; or
+   e. use the Software, in whole or in part, to build or market a competing
+      product that is sold or distributed as your own.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+3. ATTRIBUTION
+   The Author's name and this notice must remain intact and unmodified in every
+   copy of the Software. Wherever the Software is shown, shared, or referred to,
+   it must be credited as "NetScout by TheCodingExperiment".
+
+4. OWNERSHIP
+   The Software is licensed, not sold. The Author keeps all right, title, and
+   interest in it, including all copyright. Every right not expressly granted in
+   Section 1 is reserved by the Author.
+
+5. NO WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN
+   ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION
+   WITH THE SOFTWARE OR ITS USE.
+
+6. TERMINATION
+   Any breach of this license ends your permission to use the Software
+   automatically and immediately. On termination you must stop using the
+   Software and destroy all copies in your possession.
+
+7. CONTACT
+   For any permission beyond this license - including any commercial or paid
+   use - contact the Author (via the project's official page).
+
+This license applies to this and all future versions released under it. Earlier
+versions that were released under a different license remain under that license
+for the copies already distributed.

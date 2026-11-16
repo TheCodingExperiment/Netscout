@@ -7,15 +7,12 @@
 <p align="center"><strong>A cross-platform network scanner and defensive security toolkit — in a single window, with no Python required to run it.</strong></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/license-MIT-E01E37">
+  <img src="https://img.shields.io/badge/license-Proprietary%20(no%20resale)-E01E37">
   <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-333">
   <img src="https://img.shields.io/badge/python-stdlib%20only-3776AB">
   <img src="https://img.shields.io/badge/tools-32-E01E37">
   <img src="https://img.shields.io/badge/tests-46%20files%20%C2%B7%201000%2B%20checks-2ea44f">
   <img src="https://img.shields.io/badge/scope-defensive%20only-8A8F99">
-</p>
-<p align="center">
-  <img src="netscout-demo.gif" alt="NetScout demo" width="820">
 </p>
 
 <p align="center">
@@ -50,7 +47,7 @@ NetScout shows you every device on your network, what each one is, and whether a
 ## What it does
 
 ### Discovery & inventory
-- **Device Scan** — every device on the network, with best-effort identification of type, brand and model (MAC vendor, hostnames, mDNS/Bonjour, **WS-Discovery**, UPnP, SNMP, open ports, TTL). Finds devices that ignore ping — phones with randomised MAC addresses, and the cameras, printers and Windows PCs that only answer WS-Discovery — and **drops devices that have left** instead of listing stale ARP-cache entries (it checks the OS's own neighbour re-probe on Linux and Windows).
+- **Device Scan** — every device on the network, with best-effort identification of type, brand and model (MAC vendor, hostnames, mDNS/Bonjour, **WS-Discovery**, UPnP, SNMP, open ports, TTL). Tells a **laptop from a desktop** and names the actual product line when the device reveals it — *XPS, Latitude, ThinkPad, IdeaPad, Legion, EliteBook, Pavilion, ROG, ZenBook, Aspire, Predator, MacBook, Surface, Galaxy Book, MateBook, Framework, LG gram, TERRA* and more, across Dell, HP, Lenovo, ASUS, Acer, MSI, Apple, Samsung, Huawei, Microsoft, Razer, Fujitsu and others — even from a bare model code (*FX506 → ASUS TUF*). It reports the **maker of the computer, not the maker of its Wi-Fi card**: a laptop with an Intel/Realtek/MediaTek card still reads "ASUS TUF", not "Intel". Finds devices that ignore ping — phones with randomised MAC addresses, and the cameras, printers and Windows PCs that only answer WS-Discovery — and **drops devices that have left** instead of listing stale ARP-cache entries (it checks the OS's own neighbour re-probe on Linux and Windows). On Linux with admin rights it also runs an **active ARP sweep** — asking every address on the segment for its MAC — which uncovers devices that are silent to ping *and* to every other probe; the per-port connect timeout is **tuned to the network's measured round-trip time**, so scans of a fast LAN finish quicker without missing anything.
 - **Network Info** — your IP, subnet, gateway, DHCP and DNS at a glance, plus **Internet Check** (reachability, latency, DNS tampering detection) and a **Speed Test**.
 - **Topology Map** — a picture of the network with the router at the centre.
 - **Interfaces**, **Ping** (with **Trace Route**), **Router Scan** (including a **UPnP port-forward audit**).
@@ -65,6 +62,7 @@ NetScout shows you every device on your network, what each one is, and whether a
 
 ### Bluetooth
 - **Bluetooth** — passive BLE (and, on Linux, classic) discovery with median-smoothed signal and a calibrated distance range. Decodes what devices announce: Apple Continuity (AirPods, Watch, Handoff, Hotspot…), iBeacon and Eddystone beacons (including the URL), makers from Bluetooth company IDs.
+- **Computers nearby** — reads the Windows *Connected Devices* (CDP) beacon, which states **laptop vs desktop** outright, and recognises laptops by name, so the Bluetooth scan surfaces a **"COMPUTERS NEARBY"** line listing the laptops and desktop PCs physically around you — whether or not they're on your network.
 - **Item-tracker detection** — AirTags / Find My items (and whether one is *separated from its owner*), Tile, Samsung SmartTag, Chipolo and Google Find My Device tags are flagged and listed first.
 
 ### Monitoring
@@ -75,15 +73,15 @@ NetScout shows you every device on your network, what each one is, and whether a
 - Optional **desktop notifications** so alerts are seen when the window is minimised.
 
 ### Security & control (for infrastructure you administer)
-- **Security Audit** — one read-only pass that reuses the device scan, WiFi scan and router/firewall checks, then scores the network **A–F** and lists every issue **worst-first with a concrete fix** (open admin ports, open/weak WiFi, WPS, missing PMF, known-vulnerable software, router/ARP integrity, this machine's firewall). It only reads what a scan can see — it changes nothing, and it's a posture check, not a penetration test.
+- **Security Audit** — one read-only pass that reuses the device scan, WiFi scan and router/firewall checks, then scores the network **A–F** and lists every issue **worst-first with a concrete fix** (open admin ports, open/weak WiFi, WPS, missing PMF, known-vulnerable software, router/ARP integrity, this machine's firewall). It also flags **devices that may still have their factory-default password** (cameras, routers, printers, NAS, server BMCs like iDRAC/iLO/Supermicro — advice only, it never tries a login) and **network conflicts**: one MAC address answering on several IPs (a classic sign of ARP spoofing or a misconfigured bridge) and **more than one gateway** (a rogue router or accidental double-NAT). It only reads what a scan can see — it changes nothing, and it's a posture check, not a penetration test.
 - **Server Scan** — point it at the servers on your LAN and get a full per-server audit: a confirmed scan across ~100 service ports, service/version detection, known-vulnerability flags, exposed-datastore and risky-service detection, and TLS-certificate checks — each server graded **A–F** with a fix for every issue. Reads only; never exploits anything.
-- **Vulnerability Scan** — the same deep audit aimed at *every* device, flattened into one **worst-first list** of everything known-vulnerable or dangerously exposed (outdated/EOL software, unauthenticated databases, expired/self-signed certificates, risky open services). Version- and exposure-based ("update, or confirm it's patched") — not an exploit scanner.
+- **Vulnerability Scan** — the same deep audit aimed at *every* device, flattened into one **worst-first list** of everything known-vulnerable or dangerously exposed (outdated/EOL software, unauthenticated databases, exposed admin panels and management consoles, remote-control / backdoor / C2 ports, an open X11 display, expired/self-signed certificates, and other risky open services) — each with a plain-English fix. Version- and exposure-based ("update, or confirm it's patched") — not an exploit scanner.
 - **Full Report** — one click runs the audit + server scan + vulnerability scan and produces a single **branded, self-contained HTML report** (NetScout reaper + wordmark, overall **A–F** grade, executive summary, every finding with a fix). Opens in any browser and **prints cleanly to PDF** to email or attach to a ticket. All scanned text is HTML-escaped, so a hostile banner can't tamper with the page.
 - **Port Scan** — open ports with service/version detection and **outdated / known-vulnerable software** warnings, plus TLS certificate checks.
 - **Firewall** — shows your real attack surface and whether the OS firewall is guarding it.
 - **MAC Privacy** — a randomised hardware address, the way phones do it.
 - **Switch Port / Cable Test / DHCP Check** — SNMP tools for managed switches (identify a port, find a failing cable, catch a rogue DHCP server).
-- **Power Control** — Wake-on-LAN, a usage check, and **credentialed** shutdown/restart over Windows admin, **WinRM**, SSH+sudo, or a server's **IPMI/BMC** (the target authenticates; the BMC password is passed via the environment, never the command line or stored), including **bulk shutdown of idle machines**. There is no uncredentialed / forced power-off, by design.
+- **Power Control** — Wake-on-LAN, a usage check, and **credentialed** shutdown/restart over Windows admin, **WinRM**, SSH+sudo, or a server's **IPMI/BMC** — which can also **power the server on** and **hard-cycle** it when it's off or hung (the target authenticates; the BMC password is passed via the environment, never the command line or stored), including **bulk shutdown of idle machines**. There is no uncredentialed / forced power-off, by design.
 - **IP Camera** — live picture and pan/tilt/zoom (W/A/S/D, E/Q) for ONVIF cameras you administer, using the camera's own login (WS-Security digest; the camera authenticates every frame and move). No access to cameras you have no login for.
 - **Attack response** — cut an offending host off without powering anything off: **block it at this machine's own OS firewall** (Windows/Linux, reversible, needs local admin) or, with a managed switch, **disable its switch port** (SNMP, reversible). The ARP-spoofing check names the specific host impersonating the router.
 
@@ -164,7 +162,7 @@ NetScout is deliberately built so it can't be turned into an attack tool, becaus
 ## Limitations (the honest list)
 
 - **Vulnerability warnings are version-based.** A vendor that back-ports a fix without changing the version string will still be flagged — the wording is always "update, *or confirm it's patched*".
-- **Device identification is best-effort.** "Computer" means "a PC/laptop but can't tell which".
+- **Device identification is best-effort.** NetScout names the specific model line (laptop vs desktop, *XPS / ThinkPad / Galaxy Book*…) when the device reveals it in its hostname, mDNS or UPnP; when it reveals nothing, the label falls back to the broad **"Computer"** ("a PC/laptop but can't tell which") — still correct, just less specific.
 - **Some tools need the right environment.** SNMP tools need a managed switch; true deauth-frame detection needs monitor mode (NetScout uses the OS's own disconnect log instead, which works everywhere but is indirect); spectrum analysis sees only WiFi, not microwaves or other RF.
 - **Distances are estimates** from signal strength — a radius, not a GPS fix.
 - **Speed Test / Internet Check** may be blocked on some corporate networks.
@@ -186,7 +184,7 @@ NetScout is deliberately built so it can't be turned into an attack tool, becaus
 
 ## License
 
-Released under the **MIT License** — see `LICENSE`. In short: free to use, modify and distribute, with no warranty.
+**© 2026 TheCodingExperiment. All rights reserved.** NetScout is proprietary — see `LICENSE`. In short: **free to download and use** for yourself or inside your own organization, but you **may not sell it, republish it as your own, claim you made it, or remove the author's name**. No warranty. For any commercial or paid use, ask first.
 
 ---
 

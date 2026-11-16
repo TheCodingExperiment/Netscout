@@ -87,7 +87,12 @@ recognise most of them (your phone, your laptop, the printer…).
 
 - a dot and **ONLINE** — the device is switched on and responding.
 - **IP ADDRESS** — its address right now (e.g. `192.168.1.42`).
-- **TYPE / DEVICE** — NetScout's best guess at what it is (Phone, Printer, Camera…).
+- **TYPE / DEVICE** — NetScout's best guess at what it is (Phone, Laptop, Desktop,
+  Printer, Camera…). When a device gives away its model, NetScout names it — so instead
+  of a bland "Computer" you'll often see **"Dell XPS"**, **"Lenovo ThinkPad"**,
+  **"HP EliteBook"**, **"Samsung Galaxy Book"** or **"Apple MacBook"**. It knows the
+  common laptop and desktop lines from Dell, HP, Lenovo, ASUS, Acer, MSI, Apple, Samsung,
+  Huawei, Microsoft and more, and tells a laptop apart from a desktop.
 - **RISK** — a safety rating. Blank or "NONE" is fine. "LOW/MEDIUM/HIGH" means it's
   worth a closer look (click the row to see why at the bottom).
 
@@ -202,7 +207,11 @@ You don't need to learn all of these. Start with the ones marked **⭐**.
   **FIX**. It only *reads* what a normal scan can see (open doors, WiFi encryption, risky
   devices, whether this computer's firewall is on); it changes nothing and it is **not** a
   "break-in test" — think of it as a checkup, not a stress test. A great place to start, and a
-  good thing to re-run now and then.
+  good thing to re-run now and then. It also reminds you about devices that **may still have
+  their factory password** (cameras, routers, printers, NAS boxes, server controllers — it
+  never tries to log in, it just tells you to check), and warns about **network mix-ups**: the
+  same device address showing up on two IPs (which can mean someone is eavesdropping, or a
+  cabling/bridge mistake) and **two routers** on one network.
 - **SERVER SCAN** — the deep version of the audit, aimed at your **servers**. It finds the
   servers on your network (anything with a service running), then gives each one a thorough
   going-over: every open door, the software and version behind it, known-vulnerable versions,
@@ -229,6 +238,10 @@ You don't need to learn all of these. Start with the ones marked **⭐**.
   announces about itself, so even nameless ones are recognised: **AirPods**, **Apple
   Watch**, iPhones, **beacons** (with the web address an Eddystone beacon points to), and
   the maker from its Bluetooth ID.
+    - **Computers nearby:** Windows laptops and desktops broadcast a little "I'm here"
+      Bluetooth beacon that even says *which* it is, so the scan shows a **COMPUTERS
+      NEARBY** line at the top listing the laptops and PCs around you — handy for spotting
+      every machine in a room, on or off your network.
     - **Item trackers are put at the top:** AirTags and other Find My items, **Tile**,
       **Samsung SmartTag**, **Chipolo** and **Google Find My Device** tags. A **red dot**
       means the tracker is **away from its owner**. A tracker near its owner is normal —
@@ -324,8 +337,10 @@ devices.
       USER** (it needs SSH set up with a key — ask whoever manages it).
     - **Servers with a management controller (BMC):** pick **IPMI**. It talks to the server's
       *out-of-band* controller (a separate little computer on the motherboard), so it can power
-      the server off or on even when the server itself is hung. It asks for the BMC's address and
-      login when you use it — nothing is stored, and the password is never shown.
+      the server **off**, **restart** it, **power it on**, or **hard power-cycle** it even when the
+      server itself is hung — the POWER ON and HARD POWER CYCLE options are on the right-click menu.
+      It asks for the BMC's address and login when you use it — nothing is stored, and the password
+      is passed straight to the controller, never shown or written to the command line.
 
     Phones, TVs, cameras and smart gadgets can't be switched off over the network — no app
     can do that, and NetScout tells you so. The computer (or the BMC) itself checks your
