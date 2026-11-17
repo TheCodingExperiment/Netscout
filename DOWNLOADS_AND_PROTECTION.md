@@ -47,35 +47,36 @@ honest, legal, and I'm happy to build it **if** you want it and have somewhere t
 
 ---
 
-## 3. Stopping people copying it — the honest truth + the strongest realistic setup
+## 3. "Protecting" it as open source — what AGPL v3 does and doesn't do
 
-Here's the part nobody likes but it's true: **you cannot make distributed software uncopyable.** Anyone who
-can run it can copy it, and even a compiled app can be decompiled. No tool changes that. What you *can* do,
-strongest to weakest:
+NetScout is now **open source under the GNU AGPL v3**, so the goal isn't to stop people copying it — open
+source *invites* people to read, run and build on the code. What the licence protects is different, and for a
+project you want your name on it's arguably stronger:
 
-1. **Don't publish the source.** Release only the **built app** (the PyInstaller `.exe` / `.app`) and keep
-   `netscout.py` and `gui_template.py` private. People get a working program, not your code. *(Biggest single
-   improvement you can make.)*
-2. **Keep the repo private** (or make only a release/download page public). A **public** GitHub repo can be
-   forked by anyone under GitHub's own terms — so "public source" and "no copying" pull against each other.
-3. **The license (done).** It won't physically stop a copy, but it makes reselling or claiming it as theirs a
-   clear violation you can act on.
-4. **Copyright headers in the code (done).** Ownership now travels at the top of every main source file, so a
-   copied file still carries your name.
-5. **Obfuscation (weak, usually skip).** Tools like PyArmor make the Python harder to read — it *slows*
-   copying, never stops it, and often trips antivirus. Rarely worth it for a free tool.
+1. **Nobody can close it up.** Anyone who distributes NetScout — or runs a modified version as a network
+   service — must release their **full source under the same AGPL v3**. So no company can take your code, make
+   a closed, paid, proprietary version, and cut you out. Every version that exists stays open.
+2. **Your authorship travels with it.** AGPL requires the copyright notices to be kept intact, and the header
+   sits at the top of `netscout.py` and `netscout_gui.py`. A fork legally has to keep your name on it.
+3. **They *can* use it, share it, even sell copies** — that's normal and fine for open source — **but only**
+   while keeping it open and credited. Someone shipping a closed or re-badged version with your name stripped
+   is a clear licence violation you can act on.
+4. **You still can't make software uncopyable** — open or closed, anyone who can run it can copy it, and even a
+   compiled app can be decompiled. AGPL doesn't try to prevent copying; it makes sure every copy stays free and
+   keeps your name attached.
 
-**Bottom line:** *license + copyright headers + release binaries only (private source)* is the realistic
-"hard to copy, can't be resold or claimed" setup. True uncopyability doesn't exist for anyone — not for you,
-not for Microsoft.
+If you ever want the *opposite* — source kept private, nobody else allowed to use or sell it at all — that's
+the proprietary route instead. Just say so and I'll switch it back; the two are opposites (open-and-credited,
+or closed-and-controlled).
 
 ---
 
 ## What's already done for you
 
-- **Proprietary license** replacing MIT: free to use, but no selling, no republishing as their own, no
-  claiming authorship, no removing your name. (`LICENSE`, `NetScout_License.pdf`.)
-- **Copyright header** at the top of `netscout.py` and `netscout_gui.py`.
-- **README** updated: license badge and License section now state the terms.
+- **Open-source license (GNU AGPL v3)** replacing the earlier proprietary one: free to use, study, share and
+  modify — on the one condition that any distributed or network-served version stays open under the same
+  licence and keeps your name. (`LICENSE`, `NetScout_License.pdf`.)
+- **Copyright + licence header** at the top of `netscout.py` and `netscout_gui.py`.
+- **README** updated: the license badge and License section now state the AGPL terms.
 
 *Not legal advice — I'm not a lawyer. For anything you'd actually enforce, have a professional glance at it.*

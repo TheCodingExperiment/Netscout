@@ -95,6 +95,10 @@ recognise most of them (your phone, your laptop, the printer…).
   Huawei, Microsoft and more, and tells a laptop apart from a desktop.
 - **RISK** — a safety rating. Blank or "NONE" is fine. "LOW/MEDIUM/HIGH" means it's
   worth a closer look (click the row to see why at the bottom).
+- **PRIORITY** — NetScout's own **0–100 score for how much a device should worry you**,
+  combining its risk, any known-vulnerable software, default-password hints, and whether
+  it's brand-new on the network. The list is **sorted worst-first**, so the device that
+  needs your attention most sits right at the top. "OK" means nothing of concern.
 
 Above the list, a line like **"DETECTED 9 DEVICES: 3 phones, 2 laptops, 1 printer, 1 router…
 BRANDS: Apple x3, Samsung…"** tells you at a glance **what NetScout found**. The same line
@@ -103,6 +107,17 @@ appears at the bottom of the screen while you look through the list.
 The column **POWER OFF VIA** shows which devices could be switched off remotely (see
 POWER CONTROL below). A dash just means that device can't be — phones, TVs and gadgets
 never can.
+
+**Search the list:** there's a little search box at the **top-right of the list**. Start
+typing and the table narrows **instantly** — by name, brand, type, IP address, even a risk
+word like "high". It shows how many match (e.g. *"3 / 40"*); press **Esc** or clear the box
+to see everything again. It's a lifesaver on a big office network with dozens of devices.
+(Tip: **Ctrl + F** jumps straight into it.)
+
+**It's faster now, on every network:** NetScout does a quick first pass and only spends
+the extra time on addresses that stay quiet, and it checks those in one big batch instead
+of one-at-a-time — so a scan that used to crawl on a large network now finishes in a
+fraction of the time, **without missing anything**.
 
 **It finds more than ever:** while it scans, NetScout also listens for devices that
 **announce themselves** (the same way your phone finds a printer or a Chromecast). That
@@ -526,3 +541,14 @@ people running the `.py` files directly, or building the app themselves.
 - **bleak** (free, adds Bluetooth scanning) — <https://pypi.org/project/bleak/>
   - Install it by opening a terminal / Command Prompt and typing: `pip install bleak`
   - Its own documentation: <https://bleak.readthedocs.io/>
+
+---
+
+## License (the short version)
+
+NetScout is **free and open-source** — © 2026 TheCodingExperiment, under the **GNU AGPL v3**
+(the full text is in the `LICENSE` file). You're free to use it, read how it works, share it,
+and change it. The only rule: if you give it to others or run a changed version as an online
+service, you have to **keep it open** too — publish your version's source under the same
+licence and leave the author's name in. That's what keeps NetScout open for everyone and stops
+anyone locking it away and selling it as their own. It comes with **no warranty**.

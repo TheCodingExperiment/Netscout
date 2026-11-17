@@ -7,11 +7,12 @@
 <p align="center"><strong>A cross-platform network scanner and defensive security toolkit — in a single window, with no Python required to run it.</strong></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/license-Proprietary%20(no%20resale)-E01E37">
+  <img src="https://img.shields.io/badge/license-AGPL%20v3-E01E37">
+  <img src="https://img.shields.io/badge/version-1.1.0-E01E37">
   <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-333">
   <img src="https://img.shields.io/badge/python-stdlib%20only-3776AB">
   <img src="https://img.shields.io/badge/tools-32-E01E37">
-  <img src="https://img.shields.io/badge/tests-46%20files%20%C2%B7%201000%2B%20checks-2ea44f">
+  <img src="https://img.shields.io/badge/tests-55%20files%20%C2%B7%201000%2B%20checks-2ea44f">
   <img src="https://img.shields.io/badge/scope-defensive%20only-8A8F99">
 </p>
 
@@ -31,7 +32,8 @@ NetScout shows you every device on your network, what each one is, and whether a
 - **Pure standard library.** No `pip install` needed to run from source; Bluetooth is the only optional extra.
 - **Truly standalone builds.** The packaged app bundles its own Python and Tcl/Tk — target machines need nothing installed. The build scripts *prove* it before they finish.
 - **Cross-platform**, with per-OS backends that degrade gracefully when a feature isn't available on a given machine.
-- **1,000+ automated checks** across 46 test files covering the engine and the GUI.
+- **1,000+ automated checks** across 55 test files covering the engine and the GUI.
+- **Find it instantly.** A live **search box** filters the device table as you type — by IP, name, brand, vendor, type, even risk level — and a **PRIORITY** column ranks every device by a 0–100 threat score, so whatever needs your attention is already at the top.
 - **Honest by design.** Where a result is an estimate or a guess, it says so; where something can't be done safely, it explains why instead of faking it.
 
 ---
@@ -47,7 +49,7 @@ NetScout shows you every device on your network, what each one is, and whether a
 ## What it does
 
 ### Discovery & inventory
-- **Device Scan** — every device on the network, with best-effort identification of type, brand and model (MAC vendor, hostnames, mDNS/Bonjour, **WS-Discovery**, UPnP, SNMP, open ports, TTL). Tells a **laptop from a desktop** and names the actual product line when the device reveals it — *XPS, Latitude, ThinkPad, IdeaPad, Legion, EliteBook, Pavilion, ROG, ZenBook, Aspire, Predator, MacBook, Surface, Galaxy Book, MateBook, Framework, LG gram, TERRA* and more, across Dell, HP, Lenovo, ASUS, Acer, MSI, Apple, Samsung, Huawei, Microsoft, Razer, Fujitsu and others — even from a bare model code (*FX506 → ASUS TUF*). It reports the **maker of the computer, not the maker of its Wi-Fi card**: a laptop with an Intel/Realtek/MediaTek card still reads "ASUS TUF", not "Intel". Finds devices that ignore ping — phones with randomised MAC addresses, and the cameras, printers and Windows PCs that only answer WS-Discovery — and **drops devices that have left** instead of listing stale ARP-cache entries (it checks the OS's own neighbour re-probe on Linux and Windows). On Linux with admin rights it also runs an **active ARP sweep** — asking every address on the segment for its MAC — which uncovers devices that are silent to ping *and* to every other probe; the per-port connect timeout is **tuned to the network's measured round-trip time**, so scans of a fast LAN finish quicker without missing anything.
+- **Device Scan** — every device on the network, with best-effort identification of type, brand and model (MAC vendor, hostnames, mDNS/Bonjour, **WS-Discovery**, UPnP, SNMP, open ports, TTL). Tells a **laptop from a desktop** and names the actual product line when the device reveals it — *XPS, Latitude, ThinkPad, IdeaPad, Legion, EliteBook, Pavilion, ROG, ZenBook, Aspire, Predator, MacBook, Surface, Galaxy Book, MateBook, Framework, LG gram, TERRA* and more, across Dell, HP, Lenovo, ASUS, Acer, MSI, Apple, Samsung, Huawei, Microsoft, Razer, Fujitsu and others — even from a bare model code (*FX506 → ASUS TUF*). It reports the **maker of the computer, not the maker of its Wi-Fi card**: a laptop with an Intel/Realtek/MediaTek card still reads "ASUS TUF", not "Intel". Finds devices that ignore ping — phones with randomised MAC addresses, and the cameras, printers and Windows PCs that only answer WS-Discovery — and **drops devices that have left** instead of listing stale ARP-cache entries (it checks the OS's own neighbour re-probe on Linux and Windows). On Linux with admin rights it also runs an **active ARP sweep** — asking every address on the segment for its MAC — which uncovers devices that are silent to ping *and* to every other probe; discovery is **fast on every network**: a quick first ping pass with a full-wait retry only for the addresses that stay silent, then a single **parallel probe sweep** across every remaining address and port at once — tuned to the network's measured round-trip time — in place of the old one-address-at-a-time check. A firewalled, ping-silent device is now found in a fraction of the time, so faster scans and *more* devices come together, not at each other's expense.
 - **Network Info** — your IP, subnet, gateway, DHCP and DNS at a glance, plus **Internet Check** (reachability, latency, DNS tampering detection) and a **Speed Test**.
 - **Topology Map** — a picture of the network with the router at the centre.
 - **Interfaces**, **Ping** (with **Trace Route**), **Router Scan** (including a **UPnP port-forward audit**).
@@ -184,7 +186,7 @@ NetScout is deliberately built so it can't be turned into an attack tool, becaus
 
 ## License
 
-**© 2026 TheCodingExperiment. All rights reserved.** NetScout is proprietary — see `LICENSE`. In short: **free to download and use** for yourself or inside your own organization, but you **may not sell it, republish it as your own, claim you made it, or remove the author's name**. No warranty. For any commercial or paid use, ask first.
+**© 2026 TheCodingExperiment — free software under the [GNU AGPL v3](LICENSE).** You may use, study, share and modify NetScout freely. The condition that matters: if you distribute it — **or run a modified version as a network service** — you must keep it open, publishing your source under the same AGPL-3.0 licence and keeping the author's copyright notice intact. That's what makes NetScout *open source that nobody can quietly close up and resell as their own product*. It comes with **no warranty**. Full terms in [`LICENSE`](LICENSE).
 
 ---
 
