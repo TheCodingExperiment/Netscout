@@ -193,11 +193,35 @@ You don't need to learn all of these. Start with the ones marked **⭐**.
 
 ### Keeping an eye on things
 
-- **⭐ BACKGROUND WATCH** — keeps scanning and **rings a bell the moment a new,
-  unknown device joins your network.** Perfect for catching something that shouldn't
-  be there. (You can mark your own devices as "approved" so it stops alerting on them —
-  see Step 5.) If NetScout is minimised, you also get a **desktop notification** — untick
-  **Desktop alerts** (in the **Export ▾** menu) if you don't want those.
+- **⭐ BACKGROUND WATCH — the 24/7 Guardian.** This is NetScout's "leave it running and
+  it watches your network for you" mode. It keeps re-scanning (you choose how often with
+  **WATCH EVERY … min**), and instead of just noticing new devices it tells you **everything
+  that changed** since the pass before, in plain English:
+  - **a new device joined**, or one **left**;
+  - a device **opened a new port** (and it shouts louder if it's a risky one, like remote-desktop or Telnet);
+  - a device's **risk went up** (e.g. *LOW → HIGH*);
+  - a device's **maker suddenly changed** while keeping the same hardware address (a classic sign of spoofing).
+
+  Each line is colour-coded by how much it matters (**ALERT / WARN / INFO**), and a little
+  **trend line** shows whether the number of devices and risks is going up or down over time.
+
+  **It can tell you even when NetScout is closed.** Pick how it reaches you:
+  - **Desktop pop-up** — on by default (untick *Desktop alerts* in the **Export ▾** menu to stop it).
+  - **A chat message** — paste a **Slack, Teams or Discord "incoming webhook" URL** into the
+    **ALERT WEBHOOK** box, and changes get posted straight into your chat.
+  - **E-mail** — tick *Guardian: e-mail alerts* in the **Export ▾** menu (your mail-server details
+    go in a small settings file, `~/.netscout_guardian.json`).
+  Use the menu's *Guardian alerts: …* choice to decide how much to be told — everything, just
+  things worth a look, or only act-now alerts.
+
+  **A "known-good" baseline.** Once your network looks the way it should, open **Export ▾ ▸
+  _Approve current devices as Guardian baseline_**. From then on, Guardian flags **anything that
+  drifts** from that approved list — a device that isn't supposed to be there, or an approved
+  device that opened a new port. Turn it off again with *Clear Guardian baseline*.
+
+  (You can also mark individual devices as "approved" so it stops alerting on them — see Step 5 —
+  and it quietly ignores those, so a house full of phones coming and going doesn't bury the one
+  alert that matters.)
 - **LIVE MONITOR** — watches your devices continuously and shows if a connection is
   slow or dropping. Press **STOP** when you're done.
 - **TOPOLOGY MAP** — draws a picture of your network: your router in the middle, every

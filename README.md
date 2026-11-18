@@ -8,11 +8,11 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-AGPL%20v3-E01E37">
-  <img src="https://img.shields.io/badge/version-1.1.0-E01E37">
+  <img src="https://img.shields.io/badge/version-1.2.0-E01E37">
   <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-333">
   <img src="https://img.shields.io/badge/python-stdlib%20only-3776AB">
   <img src="https://img.shields.io/badge/tools-32-E01E37">
-  <img src="https://img.shields.io/badge/tests-55%20files%20%C2%B7%201000%2B%20checks-2ea44f">
+  <img src="https://img.shields.io/badge/tests-57%20files%20%C2%B7%201000%2B%20checks-2ea44f">
   <img src="https://img.shields.io/badge/scope-defensive%20only-8A8F99">
 </p>
 
@@ -32,8 +32,9 @@ NetScout shows you every device on your network, what each one is, and whether a
 - **Pure standard library.** No `pip install` needed to run from source; Bluetooth is the only optional extra.
 - **Truly standalone builds.** The packaged app bundles its own Python and Tcl/Tk — target machines need nothing installed. The build scripts *prove* it before they finish.
 - **Cross-platform**, with per-OS backends that degrade gracefully when a feature isn't available on a given machine.
-- **1,000+ automated checks** across 55 test files covering the engine and the GUI.
+- **1,000+ automated checks** across 57 test files covering the engine and the GUI.
 - **Find it instantly.** A live **search box** filters the device table as you type — by IP, name, brand, vendor, type, even risk level — and a **PRIORITY** column ranks every device by a 0–100 threat score, so whatever needs your attention is already at the top.
+- **24/7 Guardian.** Leave it running and NetScout watches over time: it diffs every scan into a plain-language **"what changed" feed** (new/departed devices, newly opened ports, rising risk), learns an approved **baseline** and flags drift from it, and pushes alerts to **desktop, e-mail, and Slack/Teams/Discord** — so you hear about it even with the app closed.
 - **Honest by design.** Where a result is an estimate or a guess, it says so; where something can't be done safely, it explains why instead of faking it.
 
 ---
@@ -69,7 +70,7 @@ NetScout shows you every device on your network, what each one is, and whether a
 
 ### Monitoring
 - **Live Monitor** — continuous latency/packet-loss view.
-- **Background Watch** — rescans on an interval and alerts the moment an unknown device joins.
+- **Background Watch — the 24/7 Guardian.** Re-scans on an interval and turns NetScout into a continuous watch. Every pass is diffed against the one before it into a **severity-tagged change feed** — *new device joined*, *departed*, *new open port* (risky ones flagged louder), *risk rose LOW→HIGH*, *vendor changed on the same MAC* — shown live with a **trend sparkline** of devices and risks. Approve the current network as a **golden baseline** and it flags anything that drifts from it. Alerts go out at a severity you choose via **desktop notification, e-mail (SMTP), and a Slack/Teams/Discord webhook**, so you're told the moment something changes even if NetScout is closed. Already-approved devices are filtered out so it never cries wolf.
 - **Threat Monitor** — watches for attacks in progress: deauthentication floods, evil twins, security downgrades, a vanishing network, beacon floods, and ARP-spoofing / man-in-the-middle.
 - **Packet Inspector** — a passive, tcpdump/Wireshark-style look at live traffic on a link you administer: a packet-by-packet list plus an analysis of the protocol mix, who is talking to whom, the busiest ports, and **plaintext protocols** worth securing. It only *listens* (never transmits), keeps packet **headers and metadata only** — never message contents — and is admin-gated (Linux `AF_PACKET`; Windows `SIO_RCVALL`; on macOS it points you at `sudo tcpdump`).
 - Optional **desktop notifications** so alerts are seen when the window is minimised.
