@@ -392,6 +392,39 @@ devices.
   still working; *ALL MANAGED* doesn't. Only Windows / WinRM / SSH machines are ever touched —
   phones, TVs, gadgets and this PC are left alone.
 
+### Saving power the lasting way — POWER POLICY (new in v1.4.0)
+
+POWER CONTROL shuts a machine down *right now*. **POWER POLICY** sets a **rule that keeps saving
+power on its own**, every day, without NetScout having to be there. Press RUN to list your devices,
+pick one, fill in the small boxes at the top (**IDLE min**, **OFF at** a time like `22:00`, your
+**IT subnet**, and an **SSH USER** for Mac/Linux), then use a button or right-click the device:
+
+- **SLEEP WHEN IDLE** — the screen and the computer go to sleep after the minutes you set (on
+  battery **and** plugged in).
+- **SHUT DOWN NIGHTLY** — the computer shuts itself down every day at the time you chose. People
+  still get the normal save-your-work warning, and you can undo it any time with **CANCEL NIGHTLY**.
+- **ALLOW IT MGMT** — the **real fix** for the "lots of PCs stay on and we can't reach them" problem.
+  Many laptops are set to the Windows **"Public"** network, which *blocks* the very channels IT needs
+  (WinRM / Remote Desktop / file sharing). Rather than weaken the firewall, this adds **one narrow
+  rule** that lets **only your IT network** reach those channels — nothing else changes. **REMOVE IT
+  MGMT** takes it back out.
+
+Every button **shows you the exact command first** and asks before anything happens, and every
+"set" has a matching "clear", so nothing is a one-way door. It reaches a Windows PC over **WinRM**
+and a Mac/Linux machine over **SSH** — the same permission check as a shutdown, so it only ever
+changes a machine you're genuinely in charge of.
+
+### Seeing (and rolling out) the savings — POWER SAVER (new in v1.4.0)
+
+- **POWER SAVER** — press RUN and NetScout estimates **how much power (and money) is wasted** by the
+  machines left on after hours — worst offenders first. Set **IDLE WATTS** and **PRICE /kWh** to your
+  own figures (the defaults are a typical PC and a Swiss electricity price); the result is clearly an
+  estimate, not a meter reading.
+- **SAVE DEPLOYMENT PACK** — writes a folder of ready-to-use files so your IT team can set the whole
+  fleet at once instead of one PC at a time: a **Windows PowerShell script** (sleep + nightly shutdown
+  + the IT-management fix, all reversible with `-Undo`), a **Linux** equivalent, a **Group Policy**
+  how-to, and a plain-English **root-cause guide**. Start with `README.txt` in that folder.
+
 ### Watching and steering your own cameras (new)
 
 - **IP CAMERA** — shows the **live picture** from a security camera and lets you **move it**:
