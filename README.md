@@ -8,11 +8,11 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-AGPL%20v3-E01E37">
-  <img src="https://img.shields.io/badge/version-1.4.0-E01E37">
+  <img src="https://img.shields.io/badge/version-1.5.0-E01E37">
   <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-333">
   <img src="https://img.shields.io/badge/python-stdlib%20only-3776AB">
-  <img src="https://img.shields.io/badge/tools-34-E01E37">
-  <img src="https://img.shields.io/badge/tests-62%20files%20%C2%B7%201000%2B%20checks-2ea44f">
+  <img src="https://img.shields.io/badge/tools-36-E01E37">
+  <img src="https://img.shields.io/badge/tests-67%20files%20%C2%B7%201100%2B%20checks-2ea44f">
   <img src="https://img.shields.io/badge/scope-defensive%20only-8A8F99">
 </p>
 
@@ -28,7 +28,8 @@ NetScout shows you every device on your network, what each one is, and whether a
 
 ## Highlights
 
-- **34 tools** in one interface — device discovery, WiFi/Bluetooth, monitoring, a one-click security audit, deep **server** and **vulnerability** scans, a one-click **branded security report**, a passive packet inspector, credentialed **power control** and **power policy** (sleep-when-idle, after-hours shutdown, fleet deployment pack), and everyday network utilities (subnet calculator, DNS toolkit, website health).
+- **36 tools** in one interface — device discovery, WiFi/Bluetooth, monitoring, a one-click security audit, deep **server** and **vulnerability** scans, an **emailable weekly health report** and an **action audit log**, a passive packet inspector, credentialed **power control** and **power policy** (sleep-when-idle, after-hours shutdown, fleet deployment pack), and everyday network utilities (subnet calculator, DNS toolkit, website health).
+- **Scans your whole site, not just one LAN** *(v1.5.0)* — sweep several subnets/VLANs in one run, each device tagged with the network it's on, and save the set as a reusable **scan profile** ("Server VLAN", "Guest WiFi").
 - **Pure standard library.** No `pip install` needed to run from source; Bluetooth is the only optional extra.
 - **Truly standalone builds.** The packaged app bundles its own Python and Tcl/Tk — target machines need nothing installed. The build scripts *prove* it before they finish.
 - **Cross-platform**, with per-OS backends that degrade gracefully when a feature isn't available on a given machine.
@@ -88,6 +89,8 @@ NetScout shows you every device on your network, what each one is, and whether a
 - **Power Control** — Wake-on-LAN, a usage check, and **credentialed** shutdown/restart over Windows admin, **WinRM**, SSH+sudo, or a server's **IPMI/BMC** — which can also **power the server on** and **hard-cycle** it when it's off or hung (the target authenticates; the BMC password is passed via the environment, never the command line or stored), including **bulk shutdown of idle machines**. There is no uncredentialed / forced power-off, by design.
 - **Power Policy** *(v1.4.0)* — push a **lasting** power policy to a machine you administer, over the same credentialed channel (WinRM into Windows, SSH into Linux/Mac): **sleep-when-idle**, **after-hours shutdown**, and the **root-cause fix for laptops on the Public firewall profile** — a *scoped* firewall allow for your IT-management subnet only (WinRM/RDP/SMB), so IT can reach them without weakening anything else. Pick a device, see the **exact command before it runs**, and every "set" has a matching "clear" — all reversible.
 - **Power Saver** *(v1.4.0)* — estimate the **energy and money wasted** by machines left on after hours (worst offenders first, your own watt/price assumptions), and **save a fleet deployment pack**: ready-to-roll **GPO / PowerShell / cron** scripts (sleep + nightly shutdown + the root-cause allow) plus a plain-English root-cause guide, to roll the policy out to the whole fleet at once.
+- **Health Report** *(v1.5.0)* — a branded weekly summary: how many devices, an **A–F grade**, the **risks worst-first with reasons**, and **what changed since last week**. Save it as HTML or **email it** with your Guardian settings — and one command schedules it to **send itself every week** (the built app runs `wreport` headless, so NetScout needn't be open).
+- **Action Log** *(v1.5.0)* — an append-only accountability trail of **every state-changing action** NetScout sends (shutdowns, power policies, firewall blocks, switch-port changes): who ran it, when, the **exact command**, and whether it worked. Export it for your records.
 - **IP Camera** — live picture and pan/tilt/zoom (W/A/S/D, E/Q) for ONVIF cameras you administer, using the camera's own login (WS-Security digest; the camera authenticates every frame and move). No access to cameras you have no login for.
 - **Attack response** — cut an offending host off without powering anything off: **block it at this machine's own OS firewall** (Windows/Linux, reversible, needs local admin) or, with a managed switch, **disable its switch port** (SNMP, reversible). The ARP-spoofing check names the specific host impersonating the router.
 

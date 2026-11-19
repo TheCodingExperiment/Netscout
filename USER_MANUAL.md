@@ -425,6 +425,53 @@ changes a machine you're genuinely in charge of.
   + the IT-management fix, all reversible with `-Undo`), a **Linux** equivalent, a **Group Policy**
   how-to, and a plain-English **root-cause guide**. Start with `README.txt` in that folder.
 
+### The weekly health report — HEALTH REPORT (new in v1.5.0)
+
+A one-look summary of your whole network, the kind you'd send your boss or keep for the file. Press RUN
+and NetScout scans, then shows:
+
+- how many devices, and an overall **grade from A to F** (one serious problem pulls the grade down — the
+  point is to surface the worst thing first);
+- the **risks, worst first**, each with the reason; and
+- **what changed since the last report** — devices that appeared or disappeared (matched by their hardware
+  ID, so a device that merely got a new IP isn't counted as both gone and new).
+
+Then:
+
+- **EMAIL IT NOW** sends it to the address in your Guardian email settings (Settings → Guardian). The same
+  SMTP settings that send Guardian alerts send this.
+- **SAVE HTML** keeps a copy you can open in any browser or attach to a ticket.
+- **SCHEDULE WEEKLY** shows you the single command to paste in (once, as an administrator) so this PC
+  **emails the report every week on its own** — NetScout doesn't even need to be open. It works because the
+  installed NetScout also runs from the command line: `NetScout wreport --email` does the whole thing
+  headless.
+
+### The action trail — ACTION LOG (new in v1.5.0)
+
+Everything NetScout can *do* to your network — shut a machine down, push a power policy, block a host,
+disable a switch port — is now written to a permanent log. **ACTION LOG** shows it newest-first: **who** ran
+each action (the user and computer), **when**, the **exact command** that was sent, and whether it worked.
+
+Nothing that only *reads* (a scan, a report) is logged — only real changes. It's the accountability trail a
+team wants behind a tool this capable, and it pairs with the "here's the exact command" preview you already
+see before any action runs.
+
+- **EXPORT** saves the whole trail to a text file for your records.
+- **CLEAR LOG** wipes it (it asks first, and suggests EXPORT — this can't be undone).
+
+### Scanning several networks at once — SITES and PROFILES (new in v1.5.0)
+
+A real company network is more than one subnet. On **DEVICE SCAN** you'll now find:
+
+- a **SITES** box — type one or more networks (for example `10.0.1.0/24, 10.0.2.0/24`) and NetScout sweeps
+  them all in one run, showing everything in a single table with a new **SITE** column that tells you which
+  network each device is on. Leave it blank and DEVICE SCAN works exactly as before (just your own network).
+- **PROFILE** buttons — **SAVE AS** stores the current SITES (and the SHOW filter) under a name like
+  "Server VLAN" or "Guest WiFi"; **LOAD** picks a saved one instead of retyping the ranges; **DELETE**
+  removes one.
+
+As always, only scan networks you own or are responsible for.
+
 ### Watching and steering your own cameras (new)
 
 - **IP CAMERA** — shows the **live picture** from a security camera and lets you **move it**:
