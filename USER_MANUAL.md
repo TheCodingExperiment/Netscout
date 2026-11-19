@@ -429,10 +429,17 @@ those are exactly the ones to block or disconnect.
 usually business-grade version. If you don't have one, skip these three.*
 
 - **SWITCH PORT** — tells you exactly which socket on the switch this computer is in.
-- **CABLE TEST** — checks every network cable on the switch and flags any that are
-  faulty — including the sneaky kind that still works but is **secretly running ten
-  times too slow** because a wire inside is broken. Type the switch's address into the
-  **SWITCH** box (leave it empty to ask your router).
+- **⭐ SWITCH X-RAY** — the whole picture of a managed switch in one read. Type the switch's
+  address into the **SWITCH** box (leave it empty to ask your router) and it shows you two
+  things:
+  1. **Cable health** — every port, flagging any faulty cable, including the sneaky kind that
+     still works but is **secretly running ten times too slow** because a wire inside is broken.
+  2. **A port map** — *which device is plugged into each port*, named from your last scan (so
+     you see "Leon-ThinkPad on port 3", not just a number), along with its **VLAN**. Busy
+     uplink ports (the ones leading to the rest of the network) are marked so they don't clutter
+     the view. It's all **read-only** — NetScout only *asks* the switch, it never changes it.
+- **DHCP CHECK** — makes sure only one box is handing out addresses on your network.
+  Two is a problem and causes random connection failures.
 - **DHCP CHECK** — makes sure only one box is handing out addresses on your network.
   Two is a problem and causes random connection failures.
 
@@ -483,7 +490,7 @@ more permission.
 
 ## Step 7 — About the "switch" tools
 
-**SWITCH PORT, CABLE TEST and DISCONNECT** only work if your network has a **managed
+**SWITCH PORT, SWITCH X-RAY and DISCONNECT** only work if your network has a **managed
 switch** (a business-grade box that cables plug into) with a setting called **SNMP**
 turned on.
 

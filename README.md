@@ -8,11 +8,11 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/license-AGPL%20v3-E01E37">
-  <img src="https://img.shields.io/badge/version-1.2.0-E01E37">
+  <img src="https://img.shields.io/badge/version-1.3.0-E01E37">
   <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-333">
   <img src="https://img.shields.io/badge/python-stdlib%20only-3776AB">
   <img src="https://img.shields.io/badge/tools-32-E01E37">
-  <img src="https://img.shields.io/badge/tests-57%20files%20%C2%B7%201000%2B%20checks-2ea44f">
+  <img src="https://img.shields.io/badge/tests-59%20files%20%C2%B7%201000%2B%20checks-2ea44f">
   <img src="https://img.shields.io/badge/scope-defensive%20only-8A8F99">
 </p>
 
@@ -32,7 +32,8 @@ NetScout shows you every device on your network, what each one is, and whether a
 - **Pure standard library.** No `pip install` needed to run from source; Bluetooth is the only optional extra.
 - **Truly standalone builds.** The packaged app bundles its own Python and Tcl/Tk — target machines need nothing installed. The build scripts *prove* it before they finish.
 - **Cross-platform**, with per-OS backends that degrade gracefully when a feature isn't available on a given machine.
-- **1,000+ automated checks** across 57 test files covering the engine and the GUI.
+- **1,000+ automated checks** across 59 test files covering the engine and the GUI.
+- **Switch X-ray.** Point it at a managed switch and read it (read-only SNMP): every port's **cable health** *and* a **port map** of which device is plugged into each port — named from your scan, with its VLAN — so you can see your whole switch at a glance and find exactly where a device lives.
 - **Find it instantly.** A live **search box** filters the device table as you type — by IP, name, brand, vendor, type, even risk level — and a **PRIORITY** column ranks every device by a 0–100 threat score, so whatever needs your attention is already at the top.
 - **24/7 Guardian.** Leave it running and NetScout watches over time: it diffs every scan into a plain-language **"what changed" feed** (new/departed devices, newly opened ports, rising risk), learns an approved **baseline** and flags drift from it, and pushes alerts to **desktop, e-mail, and Slack/Teams/Discord** — so you hear about it even with the app closed.
 - **Honest by design.** Where a result is an estimate or a guess, it says so; where something can't be done safely, it explains why instead of faking it.
@@ -83,7 +84,7 @@ NetScout shows you every device on your network, what each one is, and whether a
 - **Port Scan** — open ports with service/version detection and **outdated / known-vulnerable software** warnings, plus TLS certificate checks.
 - **Firewall** — shows your real attack surface and whether the OS firewall is guarding it.
 - **MAC Privacy** — a randomised hardware address, the way phones do it.
-- **Switch Port / Cable Test / DHCP Check** — SNMP tools for managed switches (identify a port, find a failing cable, catch a rogue DHCP server).
+- **Switch X-ray** — read-only SNMP on a managed switch: every port's cable health (the gigabit port quietly linking at 100 because a pair is broken), **plus a port map of which device is on each port** (named from your scan, with its VLAN; uplinks/trunks flagged). Plus **Switch Port** (locate one device's port) and **DHCP Check** (catch a rogue DHCP server).
 - **Power Control** — Wake-on-LAN, a usage check, and **credentialed** shutdown/restart over Windows admin, **WinRM**, SSH+sudo, or a server's **IPMI/BMC** — which can also **power the server on** and **hard-cycle** it when it's off or hung (the target authenticates; the BMC password is passed via the environment, never the command line or stored), including **bulk shutdown of idle machines**. There is no uncredentialed / forced power-off, by design.
 - **IP Camera** — live picture and pan/tilt/zoom (W/A/S/D, E/Q) for ONVIF cameras you administer, using the camera's own login (WS-Security digest; the camera authenticates every frame and move). No access to cameras you have no login for.
 - **Attack response** — cut an offending host off without powering anything off: **block it at this machine's own OS firewall** (Windows/Linux, reversible, needs local admin) or, with a managed switch, **disable its switch port** (SNMP, reversible). The ARP-spoofing check names the specific host impersonating the router.
