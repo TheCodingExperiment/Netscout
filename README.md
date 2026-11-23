@@ -22,6 +22,8 @@
 
 NetScout shows you every device on your network, what each one is, and whether anything looks wrong — then gives you the tools to look closer and keep it safe. It runs on **Windows, macOS and Linux**, is written in **pure Python standard library** (no third-party runtime dependencies), and ships as a **standalone app** that needs nothing installed on the machines you run it on.
 
+**[Download the latest release](https://github.com/TheCodingExperiment/Netscout/releases/latest)** · [User Manual](docs/USER_MANUAL.md) · [Build it yourself](#building-a-standalone-app) · [Release notes](https://github.com/TheCodingExperiment/Netscout/releases)
+
 > **Scope:** NetScout is a *defensive* tool for networks **you own or are authorised to administer** — your home, your company, your lab. It only ever acts through equipment you control, and it will not perform attacker techniques (see *Philosophy* below). Don't point it at networks that aren't yours.
 
 ---
@@ -106,15 +108,24 @@ NetScout shows you every device on your network, what each one is, and whether a
 
 ## Install & run
 
-### Option A — the standalone app (recommended)
-Grab the build for your OS (or build it yourself, below) and run it. **No Python needed.**
+### Option A — download a release (recommended)
+Everything is on the **[Releases page](https://github.com/TheCodingExperiment/Netscout/releases)** — take the files from the **[latest release](https://github.com/TheCodingExperiment/Netscout/releases/latest)**:
 
-- **Windows:** run `NetScout.exe`. If SmartScreen warns about an unknown app, choose *More info → Run anyway*. On locked-down PCs, use the `NetScout-Folder` version.
+| You have | Download | Then |
+|---|---|---|
+| **Windows** 10/11 (64-bit) | `Windows-NetScout-Build-v….zip` | Unzip and double-click `build_windows.bat`. It makes `NetScout.exe` — and, with [Inno Setup](https://jrsoftware.org/isdl.php) installed, the one-click `NetScout-Setup.exe`. |
+| **macOS** | `macOS-NetScout-Build-v….zip` | Unzip and run `bash build_macos.sh`. It makes `NetScout.app` and a drag-to-Applications `NetScout.dmg`. |
+| **Linux** (Debian / Ubuntu / Mint, any CPU) | `netscout_…_all.deb` | `sudo apt install ./netscout_…_all.deb` — ready to use, nothing to build. |
+| Any | `NetScout-v…-Docs.zip` | The User Manual, Build Guide and licence, as Markdown and PDF. |
+
+A Windows program has to be built on Windows and a Mac app on a Mac, so those two come as **build kits**: the machine that builds needs Python once (see [`BUILD_README.txt`](BUILD_README.txt)), and the script then checks the finished app runs **without Python** — copy it to as many PCs or Macs as you like.
+
+- **Windows:** if SmartScreen warns about an unknown app, choose *More info → Run anyway*. On locked-down PCs, use the `NetScout-Folder` version the script also makes.
 - **macOS:** right-click `NetScout.app` → *Open* the first time.
-- **Linux:** run the `NetScout` binary (a `.desktop` entry is installed too).
+- **Linux:** NetScout appears in your applications menu, and `netscout` works in a terminal.
 
-### Option B — from source
-Requires Python 3.9+ (3.11–3.13 recommended). No third-party packages are needed to run.
+### Option B — run from source
+Clone this repository (or *Code → Download ZIP*). Requires Python 3.9+ (3.11–3.13 recommended) with Tkinter — on Debian/Ubuntu that's `sudo apt install python3-tk`. No third-party packages are needed to run.
 
 ```bash
 python3 netscout_gui.py       # the graphical app
@@ -139,7 +150,7 @@ macOS:     bash build_macos.sh
 Linux:     bash build_linux.sh
 ```
 
-Each script finds a suitable Python, bundles Tcl/Tk, builds the app, and then **starts it with Python hidden from it** to verify it really is standalone before finishing. Full details — including why a build can "still need Python on some PCs" and how that's prevented — are in **BUILD_README** / the Build Guide PDF.
+Each script finds a suitable Python, bundles Tcl/Tk, builds the app, and then **starts it with Python hidden from it** to verify it really is standalone before finishing. Full details — including why a build can "still need Python on some PCs" and how that's prevented — are in [`BUILD_README.txt`](BUILD_README.txt) and the [Build Guide PDF](docs/NetScout_Build_Guide.pdf).
 
 > Build with a standard **python.org** Python (not the Microsoft Store build, not a "free-threaded" `3.13t` build). The Windows script will refuse the Store build and tell you why.
 
@@ -152,7 +163,7 @@ Each script finds a suitable Python, bundles Tcl/Tk, builds the app, and then **
 3. **Right-click** any device for notes, approval, or power actions.
 4. Explore — everything that only *reads* is completely safe; anything that *changes* something asks first.
 
-A full beginner's guide is included as **USER_MANUAL** / the User Manual PDF.
+The full beginner's guide is [`docs/USER_MANUAL.md`](docs/USER_MANUAL.md) (also as a [PDF](docs/NetScout_User_Manual.pdf)).
 
 ---
 
@@ -180,14 +191,19 @@ NetScout is deliberately built so it can't be turned into an attack tool, becaus
 
 ## Project layout
 
-| File | What it is |
+| Path | What it is |
 |---|---|
 | `netscout.py` | The engine — all the network logic and the CLI. |
 | `netscout_gui.py` | The graphical app (generated; Tkinter). |
 | `netscout.spec` | PyInstaller build recipe (same file for all three OSes). |
 | `build_windows.bat` / `build_macos.sh` / `build_linux.sh` | Per-OS build scripts. |
-| `USER_MANUAL` | Beginner's guide. |
-| `BUILD_README` | How to build the standalone app. |
+| `build_deb_source.sh` / `build_deb.sh` | Make the Linux `.deb` installer — straight from the source, or from a standalone build. |
+| `netscout.iss` | The Windows installer recipe ([Inno Setup](https://jrsoftware.org/isdl.php)). |
+| `netscout.ico` · `netscout.icns` · `netscout.png` · `installer/` | App icons and installer artwork. |
+| [`BUILD_README.txt`](BUILD_README.txt) | How to build the standalone app, step by step. |
+| [`docs/`](docs) | The [User Manual](docs/USER_MANUAL.md), plus PDFs of the manual, the Build Guide, this README and the licence. |
+| [`docs/release-notes/`](docs/release-notes) | What changed in every version. |
+| `screenshots/` | The pictures in this README (and a short demo GIF). |
 
 ---
 

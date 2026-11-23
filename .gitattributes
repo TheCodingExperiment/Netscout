@@ -1,0 +1,4 @@
+# Keep the build scripts' line endings exactly as shipped, whatever git settings the cloning machine has:
+# Windows batch files are stored byte-for-byte, shell scripts always check out with Unix line endings.
+*.bat  -text
+*.sh   text eol=lf
